@@ -1,26 +1,170 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand core */
+  --ink: #0b0d12;
+  --paper: #faf7f2;
+  --ground: #5a3a2e;
+  --accent: #2e3a59;
+
+  /* Derived */
+  --surface: color-mix(in oklab, var(--paper) 92%, white);
+  --ink-muted: color-mix(in oklab, var(--ink) 68%, var(--paper));
+  --border: color-mix(in oklab, var(--ink) 14%, var(--paper));
+  --border-strong: color-mix(in oklab, var(--ink) 22%, var(--paper));
+
+  /* Typography (assume font files / next/font wired separately if desired) */
+  --font-display: var(--font-canela, "Canela"), ui-serif, Georgia, Cambria,
+    "Times New Roman", Times, serif;
+  --font-ui: var(--font-sohne, "Söhne"), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  /* Radius */
+  --radius-xs: 0.375rem; /* 6 */
+  --radius-sm: 0.5rem; /* 8 */
+  --radius-md: 0.75rem; /* 12 */
+  --radius-lg: 1rem; /* 16 */
+  --radius-xl: 1.25rem; /* 20 */
+  --radius-2xl: 1.5rem; /* 24 */
+  --radius-3xl: 2rem; /* 32 */
+
+  /* Spacing (editorial rhythm) */
+  --spacing-0: 0px;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+
+  /* Shadows (subtle, premium) */
+  --shadow-soft: 0 1px 0 rgba(11, 13, 18, 0.04), 0 8px 24px rgba(11, 13, 18, 0.06);
+  --shadow-medium: 0 1px 0 rgba(11, 13, 18, 0.05), 0 14px 36px rgba(11, 13, 18, 0.10);
+  --shadow-float: 0 1px 0 rgba(11, 13, 18, 0.05), 0 22px 60px rgba(11, 13, 18, 0.12);
+
+  /* Focus */
+  --focus-ring: color-mix(in oklab, var(--accent) 84%, white);
+
+  /* Animation Durations */
+  --duration-instant: 150ms;
+  --duration-fast: 250ms;
+  --duration-normal: 400ms;
+  --duration-slow: 600ms;
+  --duration-slower: 800ms;
+  --duration-slowest: 1200ms;
+  
+  /* Animation Easings */
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in: cubic-bezier(0.32, 0, 0.67, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts */
+  --font-sans: var(--font-ui);
+  --font-serif: var(--font-display);
+
+  /* Colors */
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-ground: var(--ground);
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  --color-muted: var(--ink-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  /* Radius */
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-3xl: var(--radius-3xl);
+
+  /* Spacing */
+  --spacing-0: var(--spacing-0);
+  --spacing-1: var(--spacing-1);
+  --spacing-2: var(--spacing-2);
+  --spacing-3: var(--spacing-3);
+  --spacing-4: var(--spacing-4);
+  --spacing-5: var(--spacing-5);
+  --spacing-6: var(--spacing-6);
+  --spacing-8: var(--spacing-8);
+  --spacing-10: var(--spacing-10);
+  --spacing-12: var(--spacing-12);
+  --spacing-16: var(--spacing-16);
+  --spacing-20: var(--spacing-20);
+  --spacing-24: var(--spacing-24);
+
+  /* Shadows */
+  --shadow-soft: var(--shadow-soft);
+  --shadow-medium: var(--shadow-medium);
+  --shadow-float: var(--shadow-float);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    color-scheme: light;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 18%, var(--paper));
+    color: var(--ink);
+  }
+
+  :where(a, button, input, textarea, select, summary, [role="button"]) {
+    outline-color: var(--focus-ring);
+  }
+
+  :where(a, button, input, textarea, select, summary, [role="button"]):focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .text-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  .text-ui {
+    font-family: var(--font-ui);
+  }
+
+  .surface {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .ring-focus {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+  }
+
+  .hairline {
+    height: 1px;
+    background: var(--border);
+  }
 }

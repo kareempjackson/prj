@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async rewrites() {
+    return [
+      {
+        source: "/images/@katherine-hanlon-pNxzedQ5qyU-unsplash.jpg",
+        destination: "/images/katherine-hanlon-pNxzedQ5qyU-unsplash.jpg",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
