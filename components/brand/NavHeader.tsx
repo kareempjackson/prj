@@ -1,15 +1,15 @@
-import * as React from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button } from "./Button";
-import { IconButton } from "./IconButton";
-import { Pill } from "./Pill";
+import Image from "next/image";
 import { cn } from "./cn";
 
 function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 20 20" width="18" height="18" fill="none" {...props}>
+    <svg viewBox="0 0 20 20" width="22" height="22" fill="none" {...props}>
       <path
-        d="M4 6.25h12M4 10h12M4 13.75h12"
+        d="M3 6h14M3 10h14M3 14h14"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
@@ -21,112 +21,135 @@ function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
 export type NavHeaderProps = {
   className?: string;
   sticky?: boolean;
-  glass?: boolean;
-  tone?: "light" | "dark";
 };
 
 export function NavHeader({
   className,
   sticky = true,
-  glass = true,
-  tone = "light",
 }: NavHeaderProps) {
-  const nav = [
-    { label: "About", href: "#about" },
-    { label: "What We Do", href: "#what-we-do" },
-    { label: "Events", href: "#events" },
-    { label: "Members", href: "#team" },
-    { label: "Conferences", href: "#conference" },
-    // { label: "Contact", href: "#" },
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show nav when scrolling up or at top, hide when scrolling down
+      if (currentScrollY < lastScrollY || currentScrollY < 100) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+
+      // Clear existing timeout
+      clearTimeout(scrollTimeout);
+      
+      // Show nav after user stops scrolling
+      scrollTimeout = setTimeout(() => {
+        setIsVisible(true);
+      }, 800);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, [lastScrollY]);
+
+  const mainNav = [
+    { label: "What We Do", href: "/#what-we-do" },
+    { label: "About Us", href: "/#about" },
+    { label: "Events", href: "/#events" },
   ] as const;
 
-  const dark = tone === "dark";
+  const utilityNav = [
+    { label: "CE Credits", href: "/continuing-education" },
+    { label: "Conference 2026", href: "/#events" },
+    { label: "Contact", href: "/#contact" },
+  ] as const;
 
   return (
-    <header
-      className={cn(sticky ? "sticky top-4 z-50" : "relative", className)}
+    <header 
+      className={cn(
+        sticky ? "fixed top-0 left-0 right-0 z-50" : "relative",
+        "transition-transform duration-300 ease-out",
+        !isVisible && sticky ? "-translate-y-full" : "translate-y-0",
+        className
+      )}
     >
-      <div className="mx-auto max-w-6xl px-4">
-        <div
-          className={cn(
-            "rounded-full px-3 py-2",
-            dark
-              ? glass
-                ? "bg-ink/55 backdrop-blur-md text-paper"
-                : "bg-ink text-paper"
-              : glass
-              ? "bg-paper/70 backdrop-blur-md"
-              : "bg-paper"
-          )}
-        >
-          <div className="flex items-center justify-between gap-3">
+      {/* Utility Bar */}
+      <div className="bg-ink text-paper">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="flex items-center justify-end gap-6 py-2 text-xs">
+            {utilityNav.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-paper/70 hover:text-paper transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main Navigation */}
+      <div className="relative bg-[#c94b6d]">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="flex items-center justify-between py-4">
+            {/* Logo */}
             <Link
               href="/"
-              className="ring-focus inline-flex items-baseline gap-2 rounded-full px-3 py-2"
+              className="inline-flex items-center gap-4"
               aria-label="Home"
             >
-              <span className="text-display text-[0.98rem] leading-none">
-                Psychology
-              </span>
-              <span
-                className={cn(
-                  "hidden text-xs sm:inline",
-                  dark ? "text-paper/70" : "text-muted"
-                )}
-              >
-                for Racial Justice
-              </span>
+              <Image
+                src="/images/logos/PRJ_White_Transparent-Vertical.png"
+                alt="Psychologists for Racial Justice"
+                width={120}
+                height={150}
+                className="h-24 w-auto"
+                priority
+              />
             </Link>
 
-            <nav
-              className="hidden items-center gap-1 md:flex"
-              aria-label="Main"
-            >
-              {nav.map((item) => (
-                <Pill
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center gap-1" aria-label="Main">
+              {mainNav.map((item) => (
+                <Link
                   key={item.label}
-                  as="a"
                   href={item.href}
-                  className={cn(
-                    "border-transparent bg-transparent transition-colors",
-                    dark
-                      ? "text-paper hover:bg-ground hover:text-ink"
-                      : "hover:bg-ground hover:text-ink"
-                  )}
+                  className="px-5 py-2.5 text-sm font-medium text-paper/90 hover:text-paper transition-colors rounded-lg hover:bg-white/10"
                 >
                   {item.label}
-                </Pill>
+                </Link>
               ))}
             </nav>
 
-            <div className="flex items-center gap-1.5">
-              <div className="hidden sm:block">
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className={cn(
-                    dark
-                      ? "bg-paper text-ink border-paper/30 hover:bg-paper/95"
-                      : "bg-paper/60"
-                  )}
-                >
-                  Make a donation
-                </Button>
-              </div>
+            {/* Right Actions */}
+            <div className="flex items-center gap-4">
+              {/* Donate Button */}
+              <Link
+                href="https://www.gofundme.com/f/donate-to-psychologists-for-racial-justice?utm_campaign=p_lico+share-sheet-first-launch&utm_medium=copy_link&utm_source="
+                className="hidden sm:inline-flex items-center px-6 py-3 text-sm font-bold text-ink bg-paper rounded-full transition-colors duration-200 hover:bg-paper/90"
+              >
+                DONATE
+              </Link>
 
-              <div className="md:hidden">
-                <IconButton
-                  aria-label="Open menu"
-                  variant="secondary"
-                  className={cn(
-                    dark
-                      ? "bg-paper/10 text-paper border-paper/15 hover:bg-paper/12 active:bg-paper/14"
-                      : null
-                  )}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </div>
+              {/* Mobile Menu Button */}
+              <button
+                aria-label="Open menu"
+                className="lg:hidden w-11 h-11 flex items-center justify-center text-paper hover:bg-white/10 rounded-lg transition-colors"
+              >
+                <MenuIcon />
+              </button>
             </div>
           </div>
         </div>

@@ -100,7 +100,7 @@ export default function BrandPage() {
   return (
     <div className="min-h-dvh bg-paper text-ink">
       <div className="pt-6">
-        <NavHeader glass={false} />
+        <NavHeader sticky={false} />
       </div>
 
       <main className="mx-auto max-w-6xl px-6 py-16">
@@ -470,7 +470,7 @@ export default function BrandPage() {
             <Card elevation="none" className="overflow-hidden p-6">
               <p className="text-sm font-medium">Header preview</p>
               <div className="mt-4 rounded-3xl border border-border bg-paper p-6">
-                <NavHeader sticky={false} glass={false} />
+                <NavHeader sticky={false} />
               </div>
             </Card>
 

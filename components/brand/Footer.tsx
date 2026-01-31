@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "./Button";
-import { Input } from "./Input";
 import { cn } from "./cn";
 
 export type FooterVariant = "dark" | "light";
@@ -74,39 +74,29 @@ function Newsletter({ tone }: { tone: FooterVariant }) {
             support racial justice.
           </p>
         </div>
-        <form className="md:col-span-5">
-          <label className="sr-only" htmlFor="newsletter-email">
-            Email address
-          </label>
-          <div className="flex items-center gap-2">
-            <Input
-              id="newsletter-email"
-              placeholder="Email address"
-              type="email"
-              className={cn(
-                "h-11",
-                tone === "dark"
-                  ? "bg-paper/8 text-paper placeholder:text-paper/60 border-paper/15"
-                  : null,
-              )}
-            />
+        <div className="md:col-span-5">
+          <a
+            href="http://eepurl.com/iK2PlE"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button
               size="lg"
               variant={tone === "dark" ? "secondary" : "primary"}
               className={cn(
-                "h-11",
+                "h-11 w-full",
                 tone === "dark" ? "bg-paper text-ink hover:bg-paper/95" : null,
               )}
               rightIcon={<ArrowRightIcon />}
-              aria-label="Subscribe"
+              aria-label="Subscribe to newsletter"
             >
               Subscribe
             </Button>
-          </div>
+          </a>
           <p className={cn("mt-2 text-xs", muted)}>
             No spam. Unsubscribe anytime.
           </p>
-        </form>
+        </div>
       </div>
     </div>
   );
@@ -132,9 +122,13 @@ export function Footer({ variant = "dark", className }: FooterProps) {
 
           <div className="grid gap-10 md:grid-cols-12">
             <div className="md:col-span-5">
-              <p className="text-display text-2xl leading-tight">
-                Psychology for Racial Justice
-              </p>
+              <Image
+                src="/images/logos/PRJ White Horizontal.png"
+                alt="Psychology for Racial Justice"
+                width={240}
+                height={60}
+                className="h-12 w-auto"
+              />
               <p
                 className={cn(
                   "mt-3 max-w-md text-sm leading-6",
@@ -239,16 +233,20 @@ export function Footer({ variant = "dark", className }: FooterProps) {
               rights reserved.
             </p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              {["Privacy", "Terms", "Accessibility"].map((t) => (
+              {[
+                { label: "Privacy", href: "/privacy" },
+                { label: "Terms", href: "/terms" },
+                { label: "Accessibility", href: "/accessibility" },
+              ].map((item) => (
                 <Link
-                  key={t}
-                  href="#"
+                  key={item.label}
+                  href={item.href}
                   className={cn(
                     "ring-focus rounded-lg px-1 py-1 transition-colors",
                     dark ? "text-paper/70 hover:bg-paper/8" : "text-muted hover:bg-ink/[0.04]",
                   )}
                 >
-                  {t}
+                  {item.label}
                 </Link>
               ))}
             </div>
@@ -258,5 +256,6 @@ export function Footer({ variant = "dark", className }: FooterProps) {
     </footer>
   );
 }
+
 
 
