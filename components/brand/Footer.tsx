@@ -13,7 +13,7 @@ export type FooterProps = {
 
 function ArrowRightIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 20 20" width="16" height="16" fill="none" {...props}>
+    <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true" focusable="false" {...props}>
       <path
         d="M7 5l6 5-6 5"
         stroke="currentColor"

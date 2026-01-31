@@ -118,6 +118,7 @@
     text-rendering: geometricPrecision;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -125,6 +126,15 @@
     color: var(--ink);
     font-family: var(--font-ui);
     letter-spacing: -0.01em;
+    /* Prevent layout shifts during scroll */
+    overflow-x: hidden;
+  }
+  
+  /* Optimize elements that will be animated */
+  .will-change-transform {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   ::selection {
@@ -139,6 +149,30 @@
   :where(a, button, input, textarea, select, summary, [role="button"]):focus-visible {
     outline: 2px solid var(--focus-ring);
     outline-offset: 3px;
+  }
+
+  /* ADA Compliance: Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ADA Compliance: Ensure minimum touch target size (44x44px) */
+  @media (pointer: coarse) {
+    button,
+    a,
+    input[type="checkbox"],
+    input[type="radio"],
+    [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
 }
 
