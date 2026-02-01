@@ -380,11 +380,11 @@ export default function AccessibilityContent() {
                 <p className="text-ink/70 text-sm">
                   <strong className="text-ink">Email:</strong>{" "}
                   <a 
-                    href="mailto:accessibility@psychforracialjustice.org" 
+                    href="mailto:psych4rj@gmail.com" 
                     className="underline hover:text-ink transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded"
                     style={{ color: '#e07a4d' }}
                   >
-                    accessibility@psychforracialjustice.org
+                    psych4rj@gmail.com
                   </a>
                 </p>
               </div>
@@ -395,11 +395,11 @@ export default function AccessibilityContent() {
                 <p className="text-ink/70 text-sm">
                   <strong className="text-ink">Phone:</strong>{" "}
                   <a 
-                    href="tel:617-555-0123" 
+                    href="tel:+14044106674" 
                     className="underline hover:text-ink transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded"
                     style={{ color: '#e07a4d' }}
                   >
-                    617-555-0123
+                    (404) 410-6674
                   </a>
                 </p>
               </div>
@@ -436,18 +436,18 @@ export default function AccessibilityContent() {
                     />
                   </div>
                   <div className="space-y-1 text-sm text-paper/50 tracking-wide">
-                    <p>123 Justice Avenue, Suite 200</p>
-                    <p>Cambridge, MA 02138</p>
+                    <p>267 Langley Drive #1366</p>
+                    <p>Lawrenceville, GA 30046-6907</p>
                   </div>
                   <div className="mt-5 space-y-1 text-sm">
                     <p>
-                      <a href="tel:617-555-0123" className="text-paper/70 hover:text-paper transition-colors">
-                        617-555-0123
+                      <a href="tel:+14044106674" className="text-paper/70 hover:text-paper transition-colors">
+                        (404) 410-6674
                       </a>
                     </p>
                     <p>
-                      <a href="mailto:contact@psychforracialjustice.org" className="text-paper/70 hover:text-paper transition-colors">
-                        contact@psychforracialjustice.org
+                      <a href="mailto:psych4rj@gmail.com" className="text-paper/70 hover:text-paper transition-colors">
+                        psych4rj@gmail.com
                       </a>
                     </p>
                   </div>

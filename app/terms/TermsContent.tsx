@@ -321,7 +321,7 @@ export default function TermsContent() {
               </p>
             </div>
             <a
-              href="mailto:legal@psychforracialjustice.org"
+              href="mailto:psych4rj@gmail.com"
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-paper rounded-full transition-all hover:opacity-90 whitespace-nowrap"
               style={{
                 background: "linear-gradient(135deg, #c94b6d, #a4c639)",
@@ -358,18 +358,18 @@ export default function TermsContent() {
                     />
                   </div>
                   <div className="space-y-1 text-sm text-paper/50 tracking-wide">
-                    <p>123 Justice Avenue, Suite 200</p>
-                    <p>Cambridge, MA 02138</p>
+                    <p>267 Langley Drive #1366</p>
+                    <p>Lawrenceville, GA 30046-6907</p>
                   </div>
                   <div className="mt-5 space-y-1 text-sm">
                     <p>
-                      <a href="tel:617-555-0123" className="text-paper/70 hover:text-paper transition-colors">
-                        617-555-0123
+                      <a href="tel:+14044106674" className="text-paper/70 hover:text-paper transition-colors">
+                        (404) 410-6674
                       </a>
                     </p>
                     <p>
-                      <a href="mailto:contact@psychforracialjustice.org" className="text-paper/70 hover:text-paper transition-colors">
-                        contact@psychforracialjustice.org
+                      <a href="mailto:psych4rj@gmail.com" className="text-paper/70 hover:text-paper transition-colors">
+                        psych4rj@gmail.com
                       </a>
                     </p>
                   </div>

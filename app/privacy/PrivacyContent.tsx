@@ -120,7 +120,7 @@ export default function PrivacyContent() {
       title: "Your Rights & Choices",
       content: [
         "You have the right to access, correct, or delete your personal information at any time. You may also object to or restrict certain processing of your data.",
-        "You can update your account information by logging into your account settings. To request deletion of your data or exercise other rights, please contact us at privacy@psychforracialjustice.org.",
+        "You can update your account information by logging into your account settings. To request deletion of your data or exercise other rights, please contact us at psych4rj@gmail.com.",
         "If you have subscribed to our newsletter, you can unsubscribe at any time by clicking the unsubscribe link in any email we send.",
       ],
     },
@@ -277,7 +277,7 @@ export default function PrivacyContent() {
               </p>
             </div>
             <a
-              href="mailto:privacy@psychforracialjustice.org"
+              href="mailto:psych4rj@gmail.com"
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-paper rounded-full transition-all hover:opacity-90 whitespace-nowrap"
               style={{
                 background: "linear-gradient(135deg, #e07a4d, #c94b6d)",
@@ -314,18 +314,18 @@ export default function PrivacyContent() {
                     />
                   </div>
                   <div className="space-y-1 text-sm text-paper/50 tracking-wide">
-                    <p>123 Justice Avenue, Suite 200</p>
-                    <p>Cambridge, MA 02138</p>
+                    <p>267 Langley Drive #1366</p>
+                    <p>Lawrenceville, GA 30046-6907</p>
                   </div>
                   <div className="mt-5 space-y-1 text-sm">
                     <p>
-                      <a href="tel:617-555-0123" className="text-paper/70 hover:text-paper transition-colors">
-                        617-555-0123
+                      <a href="tel:+14044106674" className="text-paper/70 hover:text-paper transition-colors">
+                        (404) 410-6674
                       </a>
                     </p>
                     <p>
-                      <a href="mailto:contact@psychforracialjustice.org" className="text-paper/70 hover:text-paper transition-colors">
-                        contact@psychforracialjustice.org
+                      <a href="mailto:psych4rj@gmail.com" className="text-paper/70 hover:text-paper transition-colors">
+                        psych4rj@gmail.com
                       </a>
                     </p>
                   </div>

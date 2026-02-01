@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     // Send the email
     const { data, error } = await resend.emails.send({
       from: 'PRJ Contact Form <onboarding@resend.dev>',
-      to: ['contact@psychforracialjustice.org'],
+      to: ['psych4rj@gmail.com'],
       replyTo: email,
       subject: `New Contact Form Submission from ${firstName} ${lastName || ''}`.trim(),
       html: `
