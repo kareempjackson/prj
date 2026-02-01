@@ -336,37 +336,47 @@ export default function EventContent() {
       </section>
 
       {/* Topics Section */}
-      <section className="py-12 sm:py-20 lg:py-32">
+      <section className="py-16 sm:py-24 lg:py-36 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          {/* Section header - minimal, editorial */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
-            className="text-center mb-16"
+            className="mb-16 lg:mb-24"
           >
-            <p 
-              className="text-xs tracking-[0.25em] uppercase font-medium mb-4"
-              style={{ color: '#c94b6d' }}
-            >
-              Key Topics
-            </p>
-            <h2 className="text-display text-3xl sm:text-4xl leading-tight tracking-tight">
-              What You&apos;ll{" "}
+            <div className="flex items-center gap-6 mb-6">
+              <div 
+                className="h-px flex-1 max-w-[60px]"
+                style={{ background: 'linear-gradient(90deg, #c94b6d, transparent)' }}
+              />
+              <span 
+                className="text-[10px] tracking-[0.35em] uppercase font-medium"
+                style={{ color: '#c94b6d' }}
+              >
+                Curriculum
+              </span>
+            </div>
+            <h2 className="text-display text-4xl sm:text-5xl lg:text-6xl leading-[0.95] tracking-tight max-w-3xl">
+              Eight pillars of
+              <br />
+              <span className="text-ink/30">transformative</span>{" "}
               <span 
                 style={{ 
-                  background: 'linear-gradient(90deg, #e07a4d, #c94b6d, #a4c639)',
+                  background: 'linear-gradient(90deg, #e07a4d, #c94b6d)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent'
                 }}
               >
-                Learn
+                learning
               </span>
             </h2>
           </motion.div>
 
+          {/* Topics grid - editorial two-column */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 xl:gap-x-24"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -376,18 +386,69 @@ export default function EventContent() {
               <motion.div
                 key={topic.title}
                 variants={staggerItem}
-                className="p-6 rounded-2xl bg-surface border border-ink/5"
+                className="group relative"
               >
-                <div 
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-paper text-sm font-semibold mb-4"
-                  style={{ background: `linear-gradient(135deg, ${index % 2 === 0 ? '#e07a4d, #c94b6d' : '#c94b6d, #a4c639'})` }}
-                >
-                  {String(index + 1).padStart(2, '0')}
+                {/* Top border with gradient reveal on hover */}
+                <div className="relative h-px w-full overflow-hidden">
+                  <div className="absolute inset-0 bg-ink/[0.08]" />
+                  <div 
+                    className="absolute inset-0 w-0 group-hover:w-full transition-all duration-500 ease-out"
+                    style={{ 
+                      background: `linear-gradient(90deg, ${
+                        index % 3 === 0 ? '#e07a4d, #c94b6d' : 
+                        index % 3 === 1 ? '#c94b6d, #a4c639' : 
+                        '#a4c639, #e07a4d'
+                      })`
+                    }}
+                  />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{topic.title}</h3>
-                <p className="text-sm text-ink/60 leading-relaxed">{topic.description}</p>
+                
+                <div className="py-8 lg:py-10">
+                  {/* Number + Title row */}
+                  <div className="flex items-baseline gap-4 mb-3">
+                    <span 
+                      className="text-display text-2xl sm:text-3xl font-light tabular-nums transition-all duration-300 group-hover:translate-x-1"
+                      style={{ 
+                        background: `linear-gradient(135deg, ${
+                          index % 3 === 0 ? '#e07a4d, #c94b6d' : 
+                          index % 3 === 1 ? '#c94b6d, #a4c639' : 
+                          '#a4c639, #e07a4d'
+                        })`,
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        opacity: 0.7
+                      }}
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-medium text-ink tracking-tight leading-tight group-hover:text-ink/80 transition-colors">
+                      {topic.title}
+                    </h3>
+                  </div>
+                  
+                  {/* Description - elegant reveal */}
+                  <div className="pl-12 sm:pl-14">
+                    <p className="text-sm text-ink/45 leading-relaxed max-w-md group-hover:text-ink/60 transition-colors duration-300">
+                      {topic.description}
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             ))}
+          </motion.div>
+          
+          {/* Bottom accent */}
+          <motion.div 
+            className="mt-8 lg:mt-12 flex justify-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+          >
+            <div 
+              className="h-px w-32"
+              style={{ background: 'linear-gradient(90deg, transparent, rgba(201, 75, 109, 0.3), transparent)' }}
+            />
           </motion.div>
         </div>
       </section>
