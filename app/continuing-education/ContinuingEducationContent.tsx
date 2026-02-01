@@ -124,197 +124,306 @@ export default function ContinuingEducationContent() {
         </div>
       </section>
 
-      {/* Instructions Section */}
-      <section className="py-12 sm:py-20 lg:py-32 bg-surface">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      {/* Instructions Section - Editorial Design */}
+      <section className="py-16 sm:py-24 lg:py-36 bg-surface">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          {/* Editorial Header */}
           <motion.div
-            className="max-w-4xl"
+            className="mb-16 lg:mb-24"
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
             variants={staggerContainer(0.12)}
           >
-            <motion.p 
-              className="text-xs tracking-[0.25em] uppercase font-medium mb-4"
-              style={{ color: '#c94b6d' }}
-              variants={fadeInUp}
-            >
-              How It Works
-            </motion.p>
-            <motion.h2
-              className="text-display text-3xl sm:text-4xl leading-tight tracking-tight mb-12"
-              variants={fadeInUp}
-            >
-              Obtaining{" "}
-              <span 
-                style={{ 
-                  background: 'linear-gradient(90deg, #e07a4d, #c94b6d)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
-                }}
-              >
-                CE Credits
-              </span>
-            </motion.h2>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-end">
+              <motion.div className="lg:col-span-5" variants={fadeInUp}>
+                <p 
+                  className="text-[10px] tracking-[0.3em] uppercase font-medium mb-6"
+                  style={{ color: '#c94b6d' }}
+                >
+                  How It Works
+                </p>
+                <h2 className="text-display text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight">
+                  Obtaining{" "}
+                  <span 
+                    className="italic font-light"
+                    style={{ 
+                      background: 'linear-gradient(90deg, #e07a4d, #c94b6d)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent'
+                    }}
+                  >
+                    CE Credits
+                  </span>
+                </h2>
+              </motion.div>
+              <motion.div className="lg:col-span-7" variants={fadeInUp}>
+                <p className="text-ink/50 text-lg lg:text-xl leading-relaxed font-light max-w-xl lg:ml-auto">
+                  Three simple steps to earn your continuing education credits through our APA-approved programs.
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
 
+          {/* Steps - Horizontal Editorial Layout */}
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-3 gap-0"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportEarly}
+            variants={staggerContainer(0.15)}
+          >
+            {/* Step 1 */}
             <motion.div
-              className="space-y-8"
-              variants={staggerContainer(0.1)}
+              className="group relative"
+              variants={staggerItem}
             >
-              <motion.div
-                className="grid grid-cols-[3rem_1fr] gap-6"
-                variants={staggerItem}
-              >
+              <div className="lg:pr-12 pb-12 lg:pb-0">
+                {/* Top accent line */}
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-paper text-sm font-semibold"
-                  style={{ background: 'linear-gradient(135deg, #e07a4d, #c94b6d)' }}
+                  className="h-px w-full mb-8"
+                  style={{ background: 'linear-gradient(90deg, #e07a4d 0%, rgba(224, 122, 77, 0.2) 100%)' }}
+                />
+                <span 
+                  className="text-[10px] font-medium tracking-[0.2em] uppercase block mb-4"
+                  style={{ color: '#e07a4d' }}
                 >
-                  01
-                </div>
-                <div className="pt-2">
-                  <h3 className="text-lg font-semibold mb-2">Register & Access</h3>
-                  <p className="text-ink/60 leading-relaxed">
-                    Register for the conference and obtain your Zoom link to join the live session.
-                  </p>
-                </div>
-              </motion.div>
+                  Step 01
+                </span>
+                <h3 className="text-xl lg:text-2xl font-medium leading-tight mb-4 text-ink/90">
+                  Register & Access
+                </h3>
+                <p className="text-ink/50 leading-relaxed font-light">
+                  Register for the conference and obtain your Zoom link to join the live session.
+                </p>
+              </div>
+              {/* Vertical divider for desktop */}
+              <div 
+                className="hidden lg:block absolute right-0 top-8 bottom-0 w-px"
+                style={{ background: 'linear-gradient(180deg, rgba(201, 75, 109, 0.3) 0%, transparent 100%)' }}
+              />
+            </motion.div>
 
-              <motion.div
-                className="grid grid-cols-[3rem_1fr] gap-6"
-                variants={staggerItem}
-              >
+            {/* Step 2 */}
+            <motion.div
+              className="group relative"
+              variants={staggerItem}
+            >
+              <div className="lg:px-12 pb-12 lg:pb-0">
+                {/* Top accent line */}
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-paper text-sm font-semibold"
-                  style={{ background: 'linear-gradient(135deg, #c94b6d, #a4c639)' }}
+                  className="h-px w-full mb-8"
+                  style={{ background: 'linear-gradient(90deg, #c94b6d 0%, rgba(201, 75, 109, 0.2) 100%)' }}
+                />
+                <span 
+                  className="text-[10px] font-medium tracking-[0.2em] uppercase block mb-4"
+                  style={{ color: '#c94b6d' }}
                 >
-                  02
-                </div>
-                <div className="pt-2">
-                  <h3 className="text-lg font-semibold mb-2">Full Attendance Required</h3>
-                  <p className="text-ink/60 leading-relaxed">
-                    You must attend the entire program to earn CE credits.{" "}
-                    <span className="font-medium text-ink">Partial credit is not authorized.</span>
-                  </p>
-                </div>
-              </motion.div>
+                  Step 02
+                </span>
+                <h3 className="text-xl lg:text-2xl font-medium leading-tight mb-4 text-ink/90">
+                  Full Attendance
+                </h3>
+                <p className="text-ink/50 leading-relaxed font-light">
+                  You must attend the entire program to earn CE credits.{" "}
+                  <span className="text-ink/70">Partial credit is not authorized.</span>
+                </p>
+              </div>
+              {/* Vertical divider for desktop */}
+              <div 
+                className="hidden lg:block absolute right-0 top-8 bottom-0 w-px"
+                style={{ background: 'linear-gradient(180deg, rgba(164, 198, 57, 0.3) 0%, transparent 100%)' }}
+              />
+            </motion.div>
 
-              <motion.div
-                className="grid grid-cols-[3rem_1fr] gap-6"
-                variants={staggerItem}
-              >
+            {/* Step 3 */}
+            <motion.div
+              className="group"
+              variants={staggerItem}
+            >
+              <div className="lg:pl-12">
+                {/* Top accent line */}
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-paper text-sm font-semibold"
-                  style={{ background: 'linear-gradient(135deg, #a4c639, #e07a4d)' }}
+                  className="h-px w-full mb-8"
+                  style={{ background: 'linear-gradient(90deg, #a4c639 0%, rgba(164, 198, 57, 0.2) 100%)' }}
+                />
+                <span 
+                  className="text-[10px] font-medium tracking-[0.2em] uppercase block mb-4"
+                  style={{ color: '#a4c639' }}
                 >
-                  03
-                </div>
-                <div className="pt-2">
-                  <h3 className="text-lg font-semibold mb-2">Complete Post-Test</h3>
-                  <p className="text-ink/60 leading-relaxed">
-                    Score 70% or higher on the post-test to receive your certificate.
-                  </p>
-                </div>
-              </motion.div>
+                  Step 03
+                </span>
+                <h3 className="text-xl lg:text-2xl font-medium leading-tight mb-4 text-ink/90">
+                  Complete Post-Test
+                </h3>
+                <p className="text-ink/50 leading-relaxed font-light">
+                  Score 70% or higher on the post-test to receive your certificate.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Program Goals Section */}
-      <section className="py-16 sm:py-24 lg:py-36 bg-ink text-paper">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      {/* Program Goals Section - Editorial Design */}
+      <section className="py-20 sm:py-32 lg:py-40 bg-ink text-paper relative overflow-hidden">
+        {/* Subtle ambient glow */}
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] opacity-20 blur-3xl pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at center, rgba(201, 75, 109, 0.4) 0%, transparent 70%)' }}
+        />
+        
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+          {/* Editorial Header */}
           <motion.div
-            className="text-center mb-16"
+            className="mb-20 lg:mb-28"
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
             variants={fadeInUp}
           >
-            <p 
-              className="text-xs tracking-[0.25em] uppercase font-medium mb-4"
-              style={{ color: '#e07a4d' }}
-            >
-              Program Goals
-            </p>
-            <h2 className="text-display text-3xl sm:text-4xl leading-tight tracking-tight">
-              What Our Programs{" "}
-              <span 
-                style={{ 
-                  background: 'linear-gradient(90deg, #e07a4d, #c94b6d, #a4c639)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
-                }}
-              >
-                Achieve
-              </span>
-            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+              <div className="lg:col-span-5">
+                <p 
+                  className="text-[10px] tracking-[0.3em] uppercase font-medium mb-6"
+                  style={{ color: '#e07a4d' }}
+                >
+                  Program Goals
+                </p>
+                <h2 className="text-display text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight">
+                  What Our Programs{" "}
+                  <span 
+                    className="italic font-light"
+                    style={{ 
+                      background: 'linear-gradient(90deg, #e07a4d, #c94b6d)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent'
+                    }}
+                  >
+                    Achieve
+                  </span>
+                </h2>
+              </div>
+              <div className="lg:col-span-7">
+                <p className="text-paper/50 text-lg lg:text-xl leading-relaxed font-light max-w-xl lg:ml-auto">
+                  Our continuing education programs are designed to create lasting impact—
+                  building competencies that translate directly into improved practice and community outcomes.
+                </p>
+              </div>
+            </div>
           </motion.div>
 
+          {/* Editorial Content Grid */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="space-y-0"
             initial="hidden"
             whileInView="visible"
             viewport={viewportEarly}
-            variants={staggerContainer(0.1)}
+            variants={staggerContainer(0.15)}
           >
+            {/* Item 1 */}
             <motion.div
-              className="p-8 rounded-2xl border border-paper/10"
+              className="group"
               variants={staggerItem}
             >
               <div 
-                className="w-10 h-10 rounded-full flex items-center justify-center text-paper text-sm font-semibold mb-6"
-                style={{ background: 'linear-gradient(135deg, #e07a4d, #c94b6d)' }}
-              >
-                01
+                className="h-px w-full mb-10"
+                style={{ background: 'linear-gradient(90deg, rgba(224, 122, 77, 0.5) 0%, rgba(201, 75, 109, 0.2) 50%, transparent 100%)' }}
+              />
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 pb-12 lg:pb-16">
+                <div className="lg:col-span-1">
+                  <span 
+                    className="text-xs font-medium tracking-widest"
+                    style={{ color: '#e07a4d' }}
+                  >
+                    01
+                  </span>
+                </div>
+                <div className="lg:col-span-4">
+                  <h3 className="text-xl lg:text-2xl font-medium leading-tight text-paper/90 group-hover:text-paper transition-colors">
+                    Race, Racial Equity & Social Justice
+                  </h3>
+                </div>
+                <div className="lg:col-span-7">
+                  <p className="text-paper/50 leading-relaxed lg:text-lg font-light">
+                    Trainings for doctoral-level psychologists focused on race, racial equity, 
+                    and social justice—spanning practice, education, and research. Building 
+                    upon graduate competencies to improve public services.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold mb-4">
-                Race, Racial Equity & Social Justice
-              </h3>
-              <p className="text-paper/60 leading-relaxed">
-                Trainings for doctoral-level psychologists focused on race, racial equity, 
-                and social justice—spanning practice, education, and research. Building 
-                upon graduate competencies to improve public services.
-              </p>
             </motion.div>
 
+            {/* Item 2 */}
             <motion.div
-              className="p-8 rounded-2xl border border-paper/10"
+              className="group"
               variants={staggerItem}
             >
               <div 
-                className="w-10 h-10 rounded-full flex items-center justify-center text-paper text-sm font-semibold mb-6"
-                style={{ background: 'linear-gradient(135deg, #c94b6d, #a4c639)' }}
-              >
-                02
+                className="h-px w-full mb-10"
+                style={{ background: 'linear-gradient(90deg, rgba(201, 75, 109, 0.5) 0%, rgba(164, 198, 57, 0.2) 50%, transparent 100%)' }}
+              />
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 pb-12 lg:pb-16">
+                <div className="lg:col-span-1">
+                  <span 
+                    className="text-xs font-medium tracking-widest"
+                    style={{ color: '#c94b6d' }}
+                  >
+                    02
+                  </span>
+                </div>
+                <div className="lg:col-span-4">
+                  <h3 className="text-xl lg:text-2xl font-medium leading-tight text-paper/90 group-hover:text-paper transition-colors">
+                    Awareness of Racism & Its Consequences
+                  </h3>
+                </div>
+                <div className="lg:col-span-7">
+                  <p className="text-paper/50 leading-relaxed lg:text-lg font-light">
+                    Workshops promoting awareness of racism and its consequences, focused on 
+                    practice, education, and research. Advancing competencies to improve 
+                    services and professional contributions.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold mb-4">
-                Awareness of Racism & Its Consequences
-              </h3>
-              <p className="text-paper/60 leading-relaxed">
-                Workshops promoting awareness of racism and its consequences, focused on 
-                practice, education, and research. Advancing competencies to improve 
-                services and professional contributions.
-              </p>
             </motion.div>
 
+            {/* Item 3 */}
             <motion.div
-              className="p-8 rounded-2xl border border-paper/10"
+              className="group"
               variants={staggerItem}
             >
               <div 
-                className="w-10 h-10 rounded-full flex items-center justify-center text-paper text-sm font-semibold mb-6"
-                style={{ background: 'linear-gradient(135deg, #a4c639, #e07a4d)' }}
-              >
-                03
+                className="h-px w-full mb-10"
+                style={{ background: 'linear-gradient(90deg, rgba(164, 198, 57, 0.5) 0%, rgba(224, 122, 77, 0.2) 50%, transparent 100%)' }}
+              />
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 pb-12 lg:pb-16">
+                <div className="lg:col-span-1">
+                  <span 
+                    className="text-xs font-medium tracking-widest"
+                    style={{ color: '#a4c639' }}
+                  >
+                    03
+                  </span>
+                </div>
+                <div className="lg:col-span-4">
+                  <h3 className="text-xl lg:text-2xl font-medium leading-tight text-paper/90 group-hover:text-paper transition-colors">
+                    Empowering Underrepresented Groups
+                  </h3>
+                </div>
+                <div className="lg:col-span-7">
+                  <p className="text-paper/50 leading-relaxed lg:text-lg font-light">
+                    Trainings to empower underrepresented groups to resist and heal from 
+                    racism, with emphasis on practice and intervention strategies.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold mb-4">
-                Empowering Underrepresented Groups
-              </h3>
-              <p className="text-paper/60 leading-relaxed">
-                Trainings to empower underrepresented groups to resist and heal from 
-                racism, with emphasis on practice and intervention strategies.
-              </p>
             </motion.div>
+
+            {/* Closing line */}
+            <div 
+              className="h-px w-full"
+              style={{ background: 'linear-gradient(90deg, rgba(224, 122, 77, 0.3) 0%, transparent 100%)' }}
+            />
           </motion.div>
         </div>
       </section>
