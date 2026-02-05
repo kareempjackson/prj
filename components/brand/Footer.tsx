@@ -258,11 +258,11 @@ export function Footer({ variant = "dark", className }: FooterProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"
-                      className={cn(
+                          className={cn(
                         "ring-focus rounded-lg p-1 transition-colors",
                         dark ? "text-paper/70 hover:text-paper hover:bg-paper/8" : "text-muted hover:text-ink hover:bg-ink/[0.04]",
-                      )}
-                    >
+                          )}
+                        >
                       <InstagramIcon />
                     </a>
                     <a
@@ -273,7 +273,7 @@ export function Footer({ variant = "dark", className }: FooterProps) {
                       className={cn(
                         "ring-focus rounded-lg p-1 transition-colors",
                         dark ? "text-paper/70 hover:text-paper hover:bg-paper/8" : "text-muted hover:text-ink hover:bg-ink/[0.04]",
-                      )}
+                  )}
                     >
                       <ThreadsIcon />
                     </a>
