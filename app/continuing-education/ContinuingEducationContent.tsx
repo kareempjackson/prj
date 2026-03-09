@@ -135,8 +135,149 @@ export default function ContinuingEducationContent() {
         </div>
       </section>
 
+      {/* Session Materials Section */}
+      <section className="py-12 sm:py-20 lg:py-32 bg-surface" aria-labelledby="materials-heading">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <motion.div
+            className="mb-12 lg:mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            variants={staggerContainer(0.12)}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-end">
+              <motion.div className="lg:col-span-5" variants={fadeInUp}>
+                <p
+                  className="text-[10px] tracking-[0.3em] uppercase font-medium mb-6"
+                  style={{ color: "#c94b6d" }}
+                >
+                  Downloads
+                </p>
+                <h2
+                  id="materials-heading"
+                  className="text-display text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight"
+                >
+                  Session{" "}
+                  <span
+                    className="italic font-light"
+                    style={{
+                      background: "linear-gradient(90deg, #e07a4d, #c94b6d)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    Materials
+                  </span>
+                </h2>
+              </motion.div>
+              <motion.div className="lg:col-span-7" variants={fadeInUp}>
+                <p className="text-ink/50 text-lg lg:text-xl leading-relaxed font-light max-w-xl lg:ml-auto">
+                  Download the presentation materials from our conference sessions.
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          <motion.ul
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportEarly}
+            variants={staggerContainer(0.12)}
+            role="list"
+            aria-label="Conference session PDF downloads"
+          >
+            {[
+              {
+                label: "Keynote",
+                description: "Keynote presentation slides",
+                href: "https://mgzhedxcgaipsoucsaio.supabase.co/storage/v1/object/public/prj/Keynote%20.pdf",
+                accent: "#e07a4d",
+              },
+              {
+                label: "Panel 1",
+                description: "Panel 1 presentation slides",
+                href: "https://mgzhedxcgaipsoucsaio.supabase.co/storage/v1/object/public/prj/Panel%201.pdf",
+                accent: "#c94b6d",
+              },
+              {
+                label: "Panel 2",
+                description: "Panel 2 presentation slides",
+                href: "https://mgzhedxcgaipsoucsaio.supabase.co/storage/v1/object/public/prj/Panel%202.pdf",
+                accent: "#a4c639",
+              },
+            ].map((item) => (
+              <motion.li key={item.label} variants={staggerItem}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Download ${item.description} (PDF, opens in new tab)`}
+                  className="group flex flex-col h-full p-8 rounded-2xl bg-paper border border-ink/5 hover:border-ink/15 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#c94b6d]"
+                >
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-6 shrink-0"
+                    style={{ background: `${item.accent}18` }}
+                    aria-hidden="true"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke={item.accent}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <polyline points="14 2 14 8 20 8" />
+                      <line x1="12" y1="18" x2="12" y2="12" />
+                      <line x1="9" y1="15" x2="15" y2="15" />
+                    </svg>
+                  </div>
+                  <p
+                    className="text-[10px] font-medium tracking-[0.2em] uppercase mb-2"
+                    style={{ color: item.accent }}
+                  >
+                    PDF
+                  </p>
+                  <h3 className="text-xl font-semibold text-ink/90 group-hover:text-ink transition-colors mb-1">
+                    {item.label}
+                  </h3>
+                  <p className="text-sm text-ink/50 font-light mb-6 grow">
+                    {item.description}
+                  </p>
+                  <span
+                    className="inline-flex items-center gap-2 text-sm font-medium transition-colors"
+                    style={{ color: item.accent }}
+                    aria-hidden="true"
+                  >
+                    Download
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </span>
+                </a>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </div>
+      </section>
+
       {/* Instructions Section - Editorial Design */}
-      <section className="py-16 sm:py-24 lg:py-36 bg-surface">
+      <section className="py-16 sm:py-24 lg:py-36 bg-surface" aria-labelledby="how-it-works-heading">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           {/* Editorial Header */}
           <motion.div
@@ -154,7 +295,7 @@ export default function ContinuingEducationContent() {
                 >
                   How It Works
                 </p>
-                <h2 className="text-display text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight">
+                <h2 id="how-it-works-heading" className="text-display text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight">
                   Obtaining{" "}
                   <span
                     className="italic font-light"
